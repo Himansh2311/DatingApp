@@ -20,6 +20,7 @@ namespace API.Services
 
         public string CreateToken(AppUser user)
         {
+            Console.WriteLine("**-------- Create Token --------**");
             var claims =new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
@@ -33,6 +34,7 @@ namespace API.Services
             };
             var tokenHandler=new JwtSecurityTokenHandler();
             var token =tokenHandler.CreateToken(tokenDescriptor);
+            Console.WriteLine("**-------- Create Token Ends--------**");
             return tokenHandler.WriteToken(token);
         }
     }
